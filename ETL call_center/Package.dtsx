@@ -7,12 +7,12 @@
   DTS:CreatorName="DESKTOP-IJHOCER\fedem"
   DTS:DTSID="{D18C91AC-3375-45E7-94A8-9588A1D5F1C0}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.1301.433"
+  DTS:LastModifiedProductVersion="15.0.2000.68"
   DTS:LocaleID="3082"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{828D3E29-D2E0-4ED2-B997-3AFE49BA2746}">
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{0945BBEE-6E8A-4E3A-B58D-C9D4B9E8085C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -40,433 +40,253 @@
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Import telephone_operator data"
+      DTS:refId="Package\Creating auxiliary tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8D1CB3B8-03DA-446F-ACDA-AF07B4B46FF5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Creating auxiliary tables"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
       DTS:CreationName="Microsoft.Pipeline"
-      DTS:Description="Tarea Flujo de datos"
-      DTS:DTSID="{02250DDE-CCCF-42DF-8D37-F348ED5FA147}"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{423A390E-528B-4A21-B3C1-947D7F3C22E8}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Import telephone_operator data"
+      DTS:ObjectName="Data Flow Task"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
-          version="1">
-          <components>
-            <component
-              refId="Package\Import telephone_operator data\telephone_operator data"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
-              description="Destino de OLE DB"
-              name="telephone_operator data"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowset">[dbo].[telephone_operator]</property>
-                <property
-                  dataType="System.String"
-                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="Comando SQL para ejecutar."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
-                  name="FastLoadKeepIdentity">true</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Import telephone_operator data\telephone_operator data.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.call_center_sqlserver1 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.call_center_sqlserver1 1]"
-                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Import telephone_operator data\telephone_operator data.Inputs[Entrada de destino de OLE DB]"
-                  errorOrTruncationOperation="Insertar"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="Entrada de destino de OLE DB">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Import telephone_operator data\telephone_operator data.Inputs[Entrada de destino de OLE DB].Columns[tele_id]"
-                      cachedDataType="i4"
-                      cachedName="tele_id"
-                      externalMetadataColumnId="Package\Import telephone_operator data\telephone_operator data.Inputs[Entrada de destino de OLE DB].ExternalColumns[tele_id]"
-                      lineageId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].Columns[tele_id]" />
-                    <inputColumn
-                      refId="Package\Import telephone_operator data\telephone_operator data.Inputs[Entrada de destino de OLE DB].Columns[tele_PESEL]"
-                      cachedDataType="i8"
-                      cachedName="tele_PESEL"
-                      externalMetadataColumnId="Package\Import telephone_operator data\telephone_operator data.Inputs[Entrada de destino de OLE DB].ExternalColumns[tele_PESEL]"
-                      lineageId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].Columns[tele_PESEL]" />
-                    <inputColumn
-                      refId="Package\Import telephone_operator data\telephone_operator data.Inputs[Entrada de destino de OLE DB].Columns[tele_name]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="60"
-                      cachedName="tele_name"
-                      externalMetadataColumnId="Package\Import telephone_operator data\telephone_operator data.Inputs[Entrada de destino de OLE DB].ExternalColumns[tele_name]"
-                      lineageId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].Columns[tele_name]" />
-                    <inputColumn
-                      refId="Package\Import telephone_operator data\telephone_operator data.Inputs[Entrada de destino de OLE DB].Columns[tele_salary]"
-                      cachedDataType="i2"
-                      cachedName="tele_salary"
-                      externalMetadataColumnId="Package\Import telephone_operator data\telephone_operator data.Inputs[Entrada de destino de OLE DB].ExternalColumns[tele_salary]"
-                      lineageId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].Columns[tele_salary]" />
-                    <inputColumn
-                      refId="Package\Import telephone_operator data\telephone_operator data.Inputs[Entrada de destino de OLE DB].Columns[valid]"
-                      cachedDataType="ui1"
-                      cachedName="valid"
-                      externalMetadataColumnId="Package\Import telephone_operator data\telephone_operator data.Inputs[Entrada de destino de OLE DB].ExternalColumns[valid]"
-                      lineageId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].Columns[valid]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Import telephone_operator data\telephone_operator data.Inputs[Entrada de destino de OLE DB].ExternalColumns[tele_id]"
-                      dataType="i4"
-                      name="tele_id" />
-                    <externalMetadataColumn
-                      refId="Package\Import telephone_operator data\telephone_operator data.Inputs[Entrada de destino de OLE DB].ExternalColumns[tele_PESEL]"
-                      dataType="i8"
-                      name="tele_PESEL" />
-                    <externalMetadataColumn
-                      refId="Package\Import telephone_operator data\telephone_operator data.Inputs[Entrada de destino de OLE DB].ExternalColumns[tele_name]"
-                      codePage="1252"
-                      dataType="str"
-                      length="60"
-                      name="tele_name" />
-                    <externalMetadataColumn
-                      refId="Package\Import telephone_operator data\telephone_operator data.Inputs[Entrada de destino de OLE DB].ExternalColumns[tele_salary]"
-                      dataType="i2"
-                      name="tele_salary" />
-                    <externalMetadataColumn
-                      refId="Package\Import telephone_operator data\telephone_operator data.Inputs[Entrada de destino de OLE DB].ExternalColumns[valid]"
-                      dataType="ui1"
-                      name="valid" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Import telephone_operator data\telephone_operator data.Outputs[Salida de error de destino de OLE DB]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Salida de error de destino de OLE DB"
-                  synchronousInputId="Package\Import telephone_operator data\telephone_operator data.Inputs[Entrada de destino de OLE DB]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import telephone_operator data\telephone_operator data.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Import telephone_operator data\telephone_operator data.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Import telephone_operator data\telephone_operator data.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Import telephone_operator data\telephone_operator data.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Import telephone_operator data\telephone_operator source data"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
-              description="Origen de OLE DB"
-              name="telephone_operator source data"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowset">[dbo].[telephone_operator]</property>
-                <property
-                  dataType="System.String"
-                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="Comando SQL para ejecutar."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                <property
-                  dataType="System.String"
-                  description="Variable que contiene el comando SQL para ejecutar."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.String"
-                  description="Asignaciones entre los parámetros del comando SQL y las variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Import telephone_operator data\telephone_operator source data.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.call_center_sqlserver1]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.call_center_sqlserver1]"
-                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB]"
-                  name="Salida de origen de OLE DB">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].Columns[tele_id]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].ExternalColumns[tele_id]"
-                      lineageId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].Columns[tele_id]"
-                      name="tele_id"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].Columns[tele_PESEL]"
-                      dataType="i8"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].ExternalColumns[tele_PESEL]"
-                      lineageId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].Columns[tele_PESEL]"
-                      name="tele_PESEL"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].Columns[tele_name]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].ExternalColumns[tele_name]"
-                      length="60"
-                      lineageId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].Columns[tele_name]"
-                      name="tele_name"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].Columns[tele_salary]"
-                      dataType="i2"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].ExternalColumns[tele_salary]"
-                      lineageId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].Columns[tele_salary]"
-                      name="tele_salary"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].Columns[valid]"
-                      dataType="ui1"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].ExternalColumns[valid]"
-                      lineageId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].Columns[valid]"
-                      name="valid"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].ExternalColumns[tele_id]"
-                      dataType="i4"
-                      name="tele_id" />
-                    <externalMetadataColumn
-                      refId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].ExternalColumns[tele_PESEL]"
-                      dataType="i8"
-                      name="tele_PESEL" />
-                    <externalMetadataColumn
-                      refId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].ExternalColumns[tele_name]"
-                      codePage="1252"
-                      dataType="str"
-                      length="60"
-                      name="tele_name" />
-                    <externalMetadataColumn
-                      refId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].ExternalColumns[tele_salary]"
-                      dataType="i2"
-                      name="tele_salary" />
-                    <externalMetadataColumn
-                      refId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB].ExternalColumns[valid]"
-                      dataType="ui1"
-                      name="valid" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de error de origen de OLE DB]"
-                  isErrorOut="true"
-                  name="Salida de error de origen de OLE DB">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de error de origen de OLE DB].Columns[tele_id]"
-                      dataType="i4"
-                      lineageId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de error de origen de OLE DB].Columns[tele_id]"
-                      name="tele_id" />
-                    <outputColumn
-                      refId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de error de origen de OLE DB].Columns[tele_PESEL]"
-                      dataType="i8"
-                      lineageId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de error de origen de OLE DB].Columns[tele_PESEL]"
-                      name="tele_PESEL" />
-                    <outputColumn
-                      refId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de error de origen de OLE DB].Columns[tele_name]"
-                      codePage="1252"
-                      dataType="str"
-                      length="60"
-                      lineageId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de error de origen de OLE DB].Columns[tele_name]"
-                      name="tele_name" />
-                    <outputColumn
-                      refId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de error de origen de OLE DB].Columns[tele_salary]"
-                      dataType="i2"
-                      lineageId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de error de origen de OLE DB].Columns[tele_salary]"
-                      name="tele_salary" />
-                    <outputColumn
-                      refId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de error de origen de OLE DB].Columns[valid]"
-                      dataType="ui1"
-                      lineageId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de error de origen de OLE DB].Columns[valid]"
-                      name="valid" />
-                    <outputColumn
-                      refId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-          </components>
-          <paths>
-            <path
-              refId="Package\Import telephone_operator data.Paths[Salida de origen de OLE DB]"
-              endId="Package\Import telephone_operator data\telephone_operator data.Inputs[Entrada de destino de OLE DB]"
-              name="Salida de origen de OLE DB"
-              startId="Package\Import telephone_operator data\telephone_operator source data.Outputs[Salida de origen de OLE DB]" />
-          </paths>
-        </pipeline>
+          version="1" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\truncate destination telephone_operator"
+      DTS:refId="Package\Execute SQL Task"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{FC129557-A6A2-4238-BC9C-3F0B88B7CDB2}"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2D6229B5-3C50-4EA2-BC83-2CE212E882AC}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="truncate destination telephone_operator"
+      DTS:ObjectName="Execute SQL Task"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{C6E83A4E-7DAC-46D1-A2F5-AA5C1699B082}"
-          SQLTask:BypassPrepare="False"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE telephone_operator" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+        <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{F32ABA42-6C1C-46B8-8EA6-2E9E7D443600}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task 1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{B9D19675-A459-472A-93D3-0FF123917DE8}"
-      DTS:From="Package\truncate destination telephone_operator"
+      DTS:DTSID="{F1A8EB8F-26F2-4B62-926D-E3026814F242}"
+      DTS:From="Package\Creating auxiliary tables"
       DTS:LogicalAnd="True"
-      DTS:ObjectName="Restricción"
-      DTS:To="Package\Import telephone_operator data" />
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Execute SQL Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{BC1AAC5D-8D7A-4205-A02F-89EE2FE6E07F}"
+      DTS:From="Package\Creating auxiliary tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Execute SQL Task 1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{31C120E0-28F3-43A2-B392-21903B9EF683}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Data Flow Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{9F972B81-BE37-4CFF-AC54-1DC7D78EB0B7}"
+      DTS:From="Package\Execute SQL Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Data Flow Task" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
-<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
-<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
   Version="8">
-  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="229.6,41.6"
-          Id="Package\Import telephone_operator data"
-          TopLeft="95.7142873442904,119.447060498729" />
+          Size="191.2,41.6"
+          Id="Package\Creating auxiliary tables"
+          TopLeft="115.918369321017,59.4285722620347" />
         <NodeLayout
-          Size="268,41.6"
-          Id="Package\truncate destination telephone_operator"
-          TopLeft="80.5000012772425,20.0294119684754" />
+          Size="162.4,41.6"
+          Id="Package\Execute SQL Task"
+          TopLeft="44.081633403767,165.176472904773" />
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\Execute SQL Task 1"
+          TopLeft="270.204086234201,164.302523312684" />
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="157.551023091241,263.932776810801" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción]"
-          TopLeft="212.507144310766,61.6294119684754">
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="211.518369321017,101.028572262035">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,57.8176485302539"
+              EndConnector="-86.2367359172499,64.1479006427383"
               Start="0,0"
-              End="0,50.3176485302539">
+              End="-86.2367359172499,56.6479006427383">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,50.3176485302539" />
+                    End="0,28.0739503213691" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.0739503213691"
+                    Point2="0,32.0739503213691"
+                    Point3="-4,32.0739503213691" />
+                  <mssgle:LineSegment
+                    End="-82.2367359172499,32.0739503213691" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-82.2367359172499,32.0739503213691"
+                    Point2="-86.2367359172499,32.0739503213691"
+                    Point3="-86.2367359172499,36.0739503213691" />
+                  <mssgle:LineSegment
+                    End="-86.2367359172499,56.6479006427383" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="242.05170265435,101.028572262035">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="114.152383579851,63.2739510506495"
+              Start="0,0"
+              End="114.152383579851,55.7739510506495">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.6246374379394" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.6246374379394"
+                    Point2="0,25.6246374379394"
+                    Point3="4,25.6246374379394" />
+                  <mssgle:LineSegment
+                    End="110.152383579851,25.6246374379394" />
+                  <mssgle:CubicBezierSegment
+                    Point1="110.152383579851,25.6246374379394"
+                    Point2="114.152383579851,25.6246374379394"
+                    Point3="114.152383579851,29.6246374379394" />
+                  <mssgle:LineSegment
+                    End="114.152383579851,55.7739510506495" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="125.281633403767,206.776472904773">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="107.469389687474,57.1563039060282"
+              Start="0,0"
+              End="107.469389687474,49.6563039060282">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5781519530141" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.5781519530141"
+                    Point2="0,28.5781519530141"
+                    Point3="4,28.5781519530141" />
+                  <mssgle:LineSegment
+                    End="103.469389687474,28.5781519530141" />
+                  <mssgle:CubicBezierSegment
+                    Point1="103.469389687474,28.5781519530141"
+                    Point2="107.469389687474,28.5781519530141"
+                    Point3="107.469389687474,32.5781519530141" />
+                  <mssgle:LineSegment
+                    End="107.469389687474,49.6563039060282" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="356.204086234201,205.902523312684">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-99.7197298096267,58.030253498117"
+              Start="0,0"
+              End="-99.7197298096267,50.530253498117">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.4516452346715" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.4516452346715"
+                    Point2="0,34.4516452346715"
+                    Point3="-4,34.4516452346715" />
+                  <mssgle:LineSegment
+                    End="-95.7197298096267,34.4516452346715" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-95.7197298096267,34.4516452346715"
+                    Point2="-99.7197298096267,34.4516452346715"
+                    Point3="-99.7197298096267,38.4516452346715" />
+                  <mssgle:LineSegment
+                    End="-99.7197298096267,50.530253498117" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -478,69 +298,5 @@
       </GraphLayout>
     </LayoutInfo>
   </Package>
-  <TaskHost
-    design-time-name="Package\Import telephone_operator data">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="228.8,41.6"
-          Id="Package\Import telephone_operator data\telephone_operator source data"
-          TopLeft="35.5,35.5" />
-        <NodeLayout
-          Size="194.4,41.6"
-          Id="Package\Import telephone_operator data\telephone_operator data"
-          TopLeft="48.0000008174351,135.811766610591" />
-        <EdgeLayout
-          Id="Package\Import telephone_operator data.Paths[Salida de origen de OLE DB]"
-          TopLeft="147.550000408718,77.1">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,58.7117666105911"
-              Start="0,0"
-              End="0,51.2117666105911">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,51.2117666105911" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import telephone_operator data\telephone_operator source data">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import telephone_operator data\telephone_operator data">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
