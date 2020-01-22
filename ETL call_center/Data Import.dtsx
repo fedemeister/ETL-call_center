@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{EE76671A-F3FC-4CC3-8725-3DFA052F5256}">
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{43A45205-012F-4631-B20B-94A931CF8D9E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2446,6 +2446,813 @@
           version="1">
           <components>
             <component
+              refId="Package\Inserting into MOBILE PLANS\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[date]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[date]) [refTable]
+where [refTable].[date_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="date_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="quarter" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="year" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="month" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="day" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Inserting into MOBILE PLANS\OLE DB Source.Outputs[OLE DB Source Output].Columns[mb_expiration_date]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Inserting into MOBILE PLANS\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-IJHOCER.call_center_sqlserver1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-IJHOCER.call_center_sqlserver1]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Inserting into MOBILE PLANS\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Inserting into MOBILE PLANS\Lookup.Inputs[Lookup Input].Columns[mb_expiration_date]"
+                      cachedDataType="i4"
+                      cachedName="mb_expiration_date"
+                      lineageId="Package\Inserting into MOBILE PLANS\OLE DB Source.Outputs[OLE DB Source Output].Columns[mb_expiration_date]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">date_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Inserting into MOBILE PLANS\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Inserting into MOBILE PLANS\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Inserting into MOBILE PLANS\Lookup.Outputs[Lookup Match Output].Columns[day_expires]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Inserting into MOBILE PLANS\Lookup.Outputs[Lookup Match Output].Columns[day_expires]"
+                      name="day_expires"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">day</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Inserting into MOBILE PLANS\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Inserting into MOBILE PLANS\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Inserting into MOBILE PLANS\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Inserting into MOBILE PLANS\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Inserting into MOBILE PLANS\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Inserting into MOBILE PLANS\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Inserting into MOBILE PLANS\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Inserting into MOBILE PLANS\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Inserting into MOBILE PLANS\Lookup 1"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup 1"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[date]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[date]) [refTable]
+where [refTable].[date_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="date_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="quarter" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="year" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="month" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="day" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Inserting into MOBILE PLANS\OLE DB Source.Outputs[OLE DB Source Output].Columns[mb_launch_date]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Inserting into MOBILE PLANS\Lookup 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-IJHOCER.call_center_sqlserver1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-IJHOCER.call_center_sqlserver1]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Inserting into MOBILE PLANS\Lookup 1.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Inserting into MOBILE PLANS\Lookup 1.Inputs[Lookup Input].Columns[mb_launch_date]"
+                      cachedDataType="i4"
+                      cachedName="mb_launch_date"
+                      lineageId="Package\Inserting into MOBILE PLANS\OLE DB Source.Outputs[OLE DB Source Output].Columns[mb_launch_date]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">date_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Inserting into MOBILE PLANS\Lookup 1.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Inserting into MOBILE PLANS\Lookup 1.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Inserting into MOBILE PLANS\Lookup 1.Outputs[Lookup Match Output].Columns[day_lauches]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Inserting into MOBILE PLANS\Lookup 1.Outputs[Lookup Match Output].Columns[day_lauches]"
+                      name="day_lauches"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">day</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Inserting into MOBILE PLANS\Lookup 1.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Inserting into MOBILE PLANS\Lookup 1.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Inserting into MOBILE PLANS\Lookup 1.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Inserting into MOBILE PLANS\Lookup 1.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Inserting into MOBILE PLANS\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Inserting into MOBILE PLANS\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Inserting into MOBILE PLANS\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Inserting into MOBILE PLANS\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Inserting into MOBILE PLANS\Lookup 2"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup 2"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[date]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[date]) [refTable]
+where [refTable].[day] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="date_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="quarter" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="year" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="month" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="day" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Inserting into MOBILE PLANS\Lookup.Outputs[Lookup Match Output].Columns[day_expires]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Inserting into MOBILE PLANS\Lookup 2.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-IJHOCER.DW_Callcenter]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-IJHOCER.DW_Callcenter]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Inserting into MOBILE PLANS\Lookup 2.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Inserting into MOBILE PLANS\Lookup 2.Inputs[Lookup Input].Columns[day_expires]"
+                      cachedDataType="dbDate"
+                      cachedName="day_expires"
+                      lineageId="Package\Inserting into MOBILE PLANS\Lookup.Outputs[Lookup Match Output].Columns[day_expires]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">day</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Inserting into MOBILE PLANS\Lookup 2.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Inserting into MOBILE PLANS\Lookup 2.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Inserting into MOBILE PLANS\Lookup 2.Outputs[Lookup Match Output].Columns[date_id_expires]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Inserting into MOBILE PLANS\Lookup 2.Outputs[Lookup Match Output].Columns[date_id_expires]"
+                      name="date_id_expires"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">date_id</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Inserting into MOBILE PLANS\Lookup 2.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Inserting into MOBILE PLANS\Lookup 2.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Inserting into MOBILE PLANS\Lookup 2.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Inserting into MOBILE PLANS\Lookup 2.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Inserting into MOBILE PLANS\Lookup 2.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Inserting into MOBILE PLANS\Lookup 2.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Inserting into MOBILE PLANS\Lookup 2.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Inserting into MOBILE PLANS\Lookup 2.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Inserting into MOBILE PLANS\Lookup 3"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup 3"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[date]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[date]) [refTable]
+where [refTable].[day] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="date_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="quarter" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="year" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="month" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="day" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Inserting into MOBILE PLANS\Lookup 1.Outputs[Lookup Match Output].Columns[day_lauches]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Inserting into MOBILE PLANS\Lookup 3.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-IJHOCER.DW_Callcenter]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-IJHOCER.DW_Callcenter]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Inserting into MOBILE PLANS\Lookup 3.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Inserting into MOBILE PLANS\Lookup 3.Inputs[Lookup Input].Columns[day_lauches]"
+                      cachedDataType="dbDate"
+                      cachedName="day_lauches"
+                      lineageId="Package\Inserting into MOBILE PLANS\Lookup 1.Outputs[Lookup Match Output].Columns[day_lauches]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">day</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Inserting into MOBILE PLANS\Lookup 3.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Inserting into MOBILE PLANS\Lookup 3.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Inserting into MOBILE PLANS\Lookup 3.Outputs[Lookup Match Output].Columns[date_id_lauches]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Inserting into MOBILE PLANS\Lookup 3.Outputs[Lookup Match Output].Columns[date_id_lauches]"
+                      name="date_id_lauches"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">date_id</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Inserting into MOBILE PLANS\Lookup 3.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Inserting into MOBILE PLANS\Lookup 3.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Inserting into MOBILE PLANS\Lookup 3.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Inserting into MOBILE PLANS\Lookup 3.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Inserting into MOBILE PLANS\Lookup 3.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Inserting into MOBILE PLANS\Lookup 3.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Inserting into MOBILE PLANS\Lookup 3.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Inserting into MOBILE PLANS\Lookup 3.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Inserting into MOBILE PLANS\Lookup 4"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup 4"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[mobile_plans]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[mobile_plans]) [refTable]
+where [refTable].[mb_name] = ? and [refTable].[mb_expiration_date] = ? and [refTable].[mb_launch_date] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="mb_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="mb_name" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="mb_expiration_date" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="mb_launch_date" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Inserting into MOBILE PLANS\OLE DB Source.Outputs[OLE DB Source Output].Columns[mb_name]};#{Package\Inserting into MOBILE PLANS\Lookup 2.Outputs[Lookup Match Output].Columns[date_id_expires]};#{Package\Inserting into MOBILE PLANS\Lookup 3.Outputs[Lookup Match Output].Columns[date_id_lauches]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Inserting into MOBILE PLANS\Lookup 4.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-IJHOCER.DW_Callcenter]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-IJHOCER.DW_Callcenter]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Inserting into MOBILE PLANS\Lookup 4.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Inserting into MOBILE PLANS\Lookup 4.Inputs[Lookup Input].Columns[mb_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="mb_name"
+                      lineageId="Package\Inserting into MOBILE PLANS\OLE DB Source.Outputs[OLE DB Source Output].Columns[mb_name]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">mb_name</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Inserting into MOBILE PLANS\Lookup 4.Inputs[Lookup Input].Columns[date_id_expires]"
+                      cachedDataType="i4"
+                      cachedName="date_id_expires"
+                      lineageId="Package\Inserting into MOBILE PLANS\Lookup 2.Outputs[Lookup Match Output].Columns[date_id_expires]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">mb_expiration_date</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Inserting into MOBILE PLANS\Lookup 4.Inputs[Lookup Input].Columns[date_id_lauches]"
+                      cachedDataType="i4"
+                      cachedName="date_id_lauches"
+                      lineageId="Package\Inserting into MOBILE PLANS\Lookup 3.Outputs[Lookup Match Output].Columns[date_id_lauches]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">mb_launch_date</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Inserting into MOBILE PLANS\Lookup 4.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Inserting into MOBILE PLANS\Lookup 4.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Inserting into MOBILE PLANS\Lookup 4.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Inserting into MOBILE PLANS\Lookup 4.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Inserting into MOBILE PLANS\Lookup 4.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Inserting into MOBILE PLANS\Lookup 4.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Inserting into MOBILE PLANS\Lookup 4.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Inserting into MOBILE PLANS\Lookup 4.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Inserting into MOBILE PLANS\Lookup 4.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Inserting into MOBILE PLANS\Lookup 4.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Inserting into MOBILE PLANS\OLE DB Destination"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
@@ -2518,12 +3325,6 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Inserting into MOBILE PLANS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[mb_id]"
-                      cachedDataType="i4"
-                      cachedName="mb_id"
-                      externalMetadataColumnId="Package\Inserting into MOBILE PLANS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[mb_id]"
-                      lineageId="Package\Inserting into MOBILE PLANS\OLE DB Source.Outputs[OLE DB Source Output].Columns[mb_id]" />
-                    <inputColumn
                       refId="Package\Inserting into MOBILE PLANS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[mb_name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -2532,17 +3333,17 @@
                       externalMetadataColumnId="Package\Inserting into MOBILE PLANS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[mb_name]"
                       lineageId="Package\Inserting into MOBILE PLANS\OLE DB Source.Outputs[OLE DB Source Output].Columns[mb_name]" />
                     <inputColumn
-                      refId="Package\Inserting into MOBILE PLANS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[mb_expiration_date]"
+                      refId="Package\Inserting into MOBILE PLANS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[date_id_expires]"
                       cachedDataType="i4"
-                      cachedName="mb_expiration_date"
+                      cachedName="date_id_expires"
                       externalMetadataColumnId="Package\Inserting into MOBILE PLANS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[mb_expiration_date]"
-                      lineageId="Package\Inserting into MOBILE PLANS\OLE DB Source.Outputs[OLE DB Source Output].Columns[mb_expiration_date]" />
+                      lineageId="Package\Inserting into MOBILE PLANS\Lookup 2.Outputs[Lookup Match Output].Columns[date_id_expires]" />
                     <inputColumn
-                      refId="Package\Inserting into MOBILE PLANS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[mb_launch_date]"
+                      refId="Package\Inserting into MOBILE PLANS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[date_id_lauches]"
                       cachedDataType="i4"
-                      cachedName="mb_launch_date"
+                      cachedName="date_id_lauches"
                       externalMetadataColumnId="Package\Inserting into MOBILE PLANS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[mb_launch_date]"
-                      lineageId="Package\Inserting into MOBILE PLANS\OLE DB Source.Outputs[OLE DB Source Output].Columns[mb_launch_date]" />
+                      lineageId="Package\Inserting into MOBILE PLANS\Lookup 3.Outputs[Lookup Match Output].Columns[date_id_lauches]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2654,15 +3455,6 @@
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Inserting into MOBILE PLANS\OLE DB Source.Outputs[OLE DB Source Output].Columns[mb_id]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Inserting into MOBILE PLANS\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[mb_id]"
-                      lineageId="Package\Inserting into MOBILE PLANS\OLE DB Source.Outputs[OLE DB Source Output].Columns[mb_id]"
-                      name="mb_id"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Inserting into MOBILE PLANS\OLE DB Source.Outputs[OLE DB Source Output].Columns[mb_name]"
                       codePage="1252"
                       dataType="str"
@@ -2720,11 +3512,6 @@
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Inserting into MOBILE PLANS\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[mb_id]"
-                      dataType="i4"
-                      lineageId="Package\Inserting into MOBILE PLANS\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[mb_id]"
-                      name="mb_id" />
-                    <outputColumn
                       refId="Package\Inserting into MOBILE PLANS\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[mb_name]"
                       codePage="1252"
                       dataType="str"
@@ -2761,8 +3548,33 @@
           </components>
           <paths>
             <path
-              refId="Package\Inserting into MOBILE PLANS.Paths[OLE DB Source Output]"
+              refId="Package\Inserting into MOBILE PLANS.Paths[Lookup Match Output]"
+              endId="Package\Inserting into MOBILE PLANS\Lookup 1.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Inserting into MOBILE PLANS\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Inserting into MOBILE PLANS.Paths[Lookup Match Output1]"
+              endId="Package\Inserting into MOBILE PLANS\Lookup 2.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Inserting into MOBILE PLANS\Lookup 1.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Inserting into MOBILE PLANS.Paths[Lookup Match Output2]"
+              endId="Package\Inserting into MOBILE PLANS\Lookup 3.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Inserting into MOBILE PLANS\Lookup 2.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Inserting into MOBILE PLANS.Paths[Lookup Match Output3]"
+              endId="Package\Inserting into MOBILE PLANS\Lookup 4.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Inserting into MOBILE PLANS\Lookup 3.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Inserting into MOBILE PLANS.Paths[Lookup No Match Output]"
               endId="Package\Inserting into MOBILE PLANS\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Inserting into MOBILE PLANS\Lookup 4.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Inserting into MOBILE PLANS.Paths[OLE DB Source Output]"
+              endId="Package\Inserting into MOBILE PLANS\Lookup.Inputs[Lookup Input]"
               name="OLE DB Source Output"
               startId="Package\Inserting into MOBILE PLANS\OLE DB Source.Outputs[OLE DB Source Output]" />
           </paths>
@@ -2850,6 +3662,14 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 7"
       DTS:To="Package\Inserting into ANSWER A CALL" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
+      DTS:CreationName=""
+      DTS:DTSID="{9796127E-B42B-43C8-8F32-ADA9B45D59FE}"
+      DTS:From="Package\Inserting into DATE"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 8"
+      DTS:To="Package\Inserting into MOBILE PLANS" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -2866,65 +3686,53 @@
         <NodeLayout
           Size="216,41.6"
           Id="Package\Inserting into MOBILE PLANS"
-          TopLeft="65.3968265105267,34.3267978670414" />
+          TopLeft="40.2539689394892,222.750329921375" />
         <NodeLayout
           Size="228,41.6"
           Id="Package\Inserting into INTERNET PLANS"
-          TopLeft="558.730168245277,36.7058828677273" />
+          TopLeft="556.444453920637,85.6470600246971" />
         <NodeLayout
           Size="170.4,41.6"
           Id="Package\Inserting into DATE"
-          TopLeft="826.603188286563,40.4444450116625" />
+          TopLeft="779.746044631448,14.7503270042534" />
         <NodeLayout
           Size="185.6,41.6"
           Id="Package\Inserting into CLIENTS"
-          TopLeft="276.190480893972,125.411766464735" />
+          TopLeft="276.190480893972,159.670590474614" />
         <NodeLayout
           Size="210.4,41.6"
           Id="Package\Inserting into DEPARTMENT"
-          TopLeft="1046.66668449129,38.7450985826011" />
+          TopLeft="1046.66668449129,48.533334013995" />
         <NodeLayout
           Size="261.6,41.6"
           Id="Package\Inserting into HAVING A MOBILE PLAN"
-          TopLeft="56.4761895760387,300.274514015158" />
+          TopLeft="57.6190467383585,502.156869787658" />
         <NodeLayout
           Size="280.8,42.4"
           Id="Package\Inserting into HAVING AN INTERNET PLAN"
-          TopLeft="694.095248053674,234.50980721048" />
+          TopLeft="694.095248053674,244.298042641874" />
         <NodeLayout
           Size="266.4,41.6"
           Id="Package\Inserting into TELEPHONE_OPERATORS"
-          TopLeft="1297.14287673535,41.8039221549117" />
+          TopLeft="1297.14287673535,51.5921575863056" />
         <NodeLayout
           Size="223.2,41.6"
           Id="Package\Inserting into ANSWER A CALL"
-          TopLeft="703.8095294375,548.666673594831" />
+          TopLeft="703.8095294375,558.454909026225" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="173.396826510527,75.9267978670414">
+          TopLeft="147.203174505591,264.350329921375">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-28.3873036011547,224.347716148117"
+              EndConnector="0,237.806539866283"
               Start="0,0"
-              End="-28.3873036011547,216.847716148117">
+              End="0,230.306539866283">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,129.790340146689" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,129.790340146689"
-                    Point2="0,133.790340146689"
-                    Point3="-4,133.790340146689" />
-                  <mssgle:LineSegment
-                    End="-24.3873036011547,133.790340146689" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-24.3873036011547,133.790340146689"
-                    Point2="-28.3873036011547,133.790340146689"
-                    Point3="-28.3873036011547,137.790340146689" />
-                  <mssgle:LineSegment
-                    End="-28.3873036011547,216.847716148117" />
+                    End="0,230.306539866283" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2935,30 +3743,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="324.590480893972,167.011766464735">
+          TopLeft="324.590480893972,201.270590474614">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-95.0476246512665,133.262747550423"
+              EndConnector="-93.9047674889467,300.886279313045"
               Start="0,0"
-              End="-95.0476246512665,125.762747550423">
+              End="-93.9047674889467,293.386279313045">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,53.9962580870425" />
+                    End="0,126.946409485416" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,53.9962580870425"
-                    Point2="0,57.9962580870425"
-                    Point3="-4,57.9962580870425" />
+                    Point1="0,126.946409485416"
+                    Point2="0,130.946409485416"
+                    Point3="-4,130.946409485416" />
                   <mssgle:LineSegment
-                    End="-91.0476246512665,57.9962580870425" />
+                    End="-89.9047674889467,130.946409485416" />
                   <mssgle:CubicBezierSegment
-                    Point1="-91.0476246512665,57.9962580870425"
-                    Point2="-95.0476246512665,57.9962580870425"
-                    Point3="-95.0476246512665,61.9962580870425" />
+                    Point1="-89.9047674889467,130.946409485416"
+                    Point2="-93.9047674889467,130.946409485416"
+                    Point3="-93.9047674889467,134.946409485416" />
                   <mssgle:LineSegment
-                    End="-95.0476246512665,125.762747550423" />
+                    End="-93.9047674889467,293.386279313045" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2969,30 +3777,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="413.390480893972,167.011766464735">
+          TopLeft="413.390480893972,201.270590474614">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="375.638100493036,67.498040745745"
+              EndConnector="375.638100493036,43.0274521672602"
               Start="0,0"
-              End="375.638100493036,59.998040745745">
+              End="375.638100493036,35.5274521672602">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.3923993258223" />
+                    End="0,14.7365446774476" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,25.3923993258223"
-                    Point2="0,29.3923993258223"
-                    Point3="4,29.3923993258223" />
+                    Point1="0,14.7365446774476"
+                    Point2="0,18.7365446774476"
+                    Point3="4,18.7365446774476" />
                   <mssgle:LineSegment
-                    End="371.638100493036,29.3923993258223" />
+                    End="371.638100493036,18.7365446774476" />
                   <mssgle:CubicBezierSegment
-                    Point1="371.638100493036,29.3923993258223"
-                    Point2="375.638100493036,29.3923993258223"
-                    Point3="375.638100493036,33.3923993258223" />
+                    Point1="371.638100493036,18.7365446774476"
+                    Point2="375.638100493036,18.7365446774476"
+                    Point3="375.638100493036,22.7365446774476" />
                   <mssgle:LineSegment
-                    End="375.638100493036,59.998040745745" />
+                    End="375.638100493036,35.5274521672602" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3003,30 +3811,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="672.730168245277,78.3058828677273">
+          TopLeft="670.444453920637,127.247060024697">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="207.231746475064,156.203924342753"
+              EndConnector="209.517460799704,117.050982617177"
               Start="0,0"
-              End="207.231746475064,148.703924342753">
+              End="209.517460799704,109.550982617177">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,89.1913497636933" />
+                    End="0,65.8326825472449" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,89.1913497636933"
-                    Point2="0,93.1913497636933"
-                    Point3="4,93.1913497636933" />
+                    Point1="0,65.8326825472449"
+                    Point2="0,69.8326825472449"
+                    Point3="4,69.8326825472449" />
                   <mssgle:LineSegment
-                    End="203.231746475064,93.1913497636933" />
+                    End="205.517460799704,69.8326825472449" />
                   <mssgle:CubicBezierSegment
-                    Point1="203.231746475064,93.1913497636933"
-                    Point2="207.231746475064,93.1913497636933"
-                    Point3="207.231746475064,97.1913497636933" />
+                    Point1="205.517460799704,69.8326825472449"
+                    Point2="209.517460799704,69.8326825472449"
+                    Point3="209.517460799704,73.8326825472449" />
                   <mssgle:LineSegment
-                    End="207.231746475064,148.703924342753" />
+                    End="209.517460799704,109.550982617177" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3038,33 +3846,33 @@
         <NodeLayout
           Size="174.4,41.6"
           Id="Package\Inserting into CALLS"
-          TopLeft="1590.8571691659,46.1882359418902" />
+          TopLeft="1590.8571691659,55.9764713732841" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="368.990480893972,167.011766464735">
+          TopLeft="368.990480893972,201.270590474614">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="446.419048543528,381.654907130096"
+              EndConnector="381.859048543528,357.184318551611"
               Start="0,0"
-              End="446.419048543528,374.154907130096">
+              End="381.859048543528,349.684318551611">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,186.827453565048" />
+                    End="0,247.271873111194" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,186.827453565048"
-                    Point2="0,190.827453565048"
-                    Point3="4,190.827453565048" />
+                    Point1="0,247.271873111194"
+                    Point2="0,251.271873111194"
+                    Point3="4,251.271873111194" />
                   <mssgle:LineSegment
-                    End="442.419048543528,190.827453565048" />
+                    End="377.859048543528,251.271873111194" />
                   <mssgle:CubicBezierSegment
-                    Point1="442.419048543528,190.827453565048"
-                    Point2="446.419048543528,190.827453565048"
-                    Point3="446.419048543528,194.827453565048" />
+                    Point1="377.859048543528,251.271873111194"
+                    Point2="381.859048543528,251.271873111194"
+                    Point3="381.859048543528,255.271873111194" />
                   <mssgle:LineSegment
-                    End="446.419048543528,374.154907130096" />
+                    End="381.859048543528,349.684318551611" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3075,7 +3883,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="1151.86668449129,80.3450985826011">
+          TopLeft="1151.86668449129,90.133334013995">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3109,7 +3917,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="1430.34287673535,83.4039221549117">
+          TopLeft="1430.34287673535,93.1921575863056">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3143,7 +3951,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="1678.0571691659,87.7882359418902">
+          TopLeft="1678.0571691659,97.5764713732841">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3175,6 +3983,40 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 8]"
+          TopLeft="864.946044631448,56.3503270042534">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-716.692075691959,166.400002917122"
+              Start="0,0"
+              End="-716.692075691959,158.900002917122">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,79.2000014585608" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,79.2000014585608"
+                    Point2="0,83.2000014585608"
+                    Point3="-4,83.2000014585608" />
+                  <mssgle:LineSegment
+                    End="-712.692075691959,83.2000014585608" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-712.692075691959,83.2000014585608"
+                    Point2="-716.692075691959,83.2000014585608"
+                    Point3="-716.692075691959,87.2000014585608" />
+                  <mssgle:LineSegment
+                    End="-716.692075691959,158.900002917122" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -3182,47 +4024,187 @@
     design-time-name="Package\Inserting into MOBILE PLANS">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="149.6,41.6"
           Id="Package\Inserting into MOBILE PLANS\OLE DB Source"
-          TopLeft="212,73.6" />
+          TopLeft="223.2,76.8" />
         <NodeLayout
           Size="170.4,41.6"
           Id="Package\Inserting into MOBILE PLANS\OLE DB Destination"
-          TopLeft="213.6,197.6" />
+          TopLeft="229.6,704" />
+        <NodeLayout
+          Size="112.8,41.6"
+          Id="Package\Inserting into MOBILE PLANS\Lookup"
+          TopLeft="243.2,192" />
         <EdgeLayout
           Id="Package\Inserting into MOBILE PLANS.Paths[OLE DB Source Output]"
-          TopLeft="286.8,115.2">
+          TopLeft="298.8,118.4">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="12,82.4"
+              EndConnector="0,73.6"
               Start="0,0"
-              End="12,74.9">
+              End="0,66.1">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.2" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,37.2"
-                    Point2="0,41.2"
-                    Point3="4,41.2" />
-                  <mssgle:LineSegment
-                    End="8,41.2" />
-                  <mssgle:CubicBezierSegment
-                    Point1="8,41.2"
-                    Point2="12,41.2"
-                    Point3="12,45.2" />
-                  <mssgle:LineSegment
-                    End="12,74.9" />
+                    End="0,66.1" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="121.6,41.6"
+          Id="Package\Inserting into MOBILE PLANS\Lookup 1"
+          TopLeft="242.4,300" />
+        <EdgeLayout
+          Id="Package\Inserting into MOBILE PLANS.Paths[Lookup Match Output]"
+          TopLeft="301.4,233.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66.4"
+              Start="0,0"
+              End="0,58.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,23.6453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="121.6,41.6"
+          Id="Package\Inserting into MOBILE PLANS\Lookup 2"
+          TopLeft="251.2,386.4" />
+        <EdgeLayout
+          Id="Package\Inserting into MOBILE PLANS.Paths[Lookup Match Output1]"
+          TopLeft="303.2,341.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.80000000000001,44.8"
+              Start="0,0"
+              End="8.80000000000001,37.3">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.4" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.4"
+                    Point2="0,22.4"
+                    Point3="4,22.4" />
+                  <mssgle:LineSegment
+                    End="4.80000000000001,22.4" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.80000000000001,22.4"
+                    Point2="8.80000000000001,22.4"
+                    Point3="8.80000000000001,26.4" />
+                  <mssgle:LineSegment
+                    End="8.80000000000001,37.3" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-43.79138671875,27.4,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="121.6,41.6"
+          Id="Package\Inserting into MOBILE PLANS\Lookup 3"
+          TopLeft="248,465.6" />
+        <EdgeLayout
+          Id="Package\Inserting into MOBILE PLANS.Paths[Lookup Match Output2]"
+          TopLeft="310.4,428">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.6"
+              Start="0,0"
+              End="0,30.1">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.1" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,9.24531250000001,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="121.6,41.6"
+          Id="Package\Inserting into MOBILE PLANS\Lookup 4"
+          TopLeft="253.6,580" />
+        <EdgeLayout
+          Id="Package\Inserting into MOBILE PLANS.Paths[Lookup Match Output3]"
+          TopLeft="311.6,507.2">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,72.8"
+              Start="0,0"
+              End="0,65.3">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.3" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,26.8453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Inserting into MOBILE PLANS.Paths[Lookup No Match Output]"
+          TopLeft="314.6,621.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,82.4000000000002"
+              Start="0,0"
+              End="0,74.9000000000002">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74.9000000000002" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,31.6453125000001,111.6127734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3615,6 +4597,121 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Inserting into MOBILE PLANS\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[date]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Inserting into MOBILE PLANS\Lookup 1">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[date]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Inserting into MOBILE PLANS\Lookup 2">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[date]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Inserting into MOBILE PLANS\Lookup 3">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[date]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Inserting into MOBILE PLANS\Lookup 4">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[mobile_plans]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
